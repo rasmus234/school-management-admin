@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+    mysql:
+        image: mariadb
+        restart: unless-stopped
+        tty: true
+        ports:
+            - "3306:3306"
+        environment:
+            MYSQL_DATABASE: school_db
+            MYSQL_USER: school_user
+            MYSQL_PASSWORD: school_password
+            MYSQL_ROOT_PASSWORD: school_password
+            SERVICE_TAGS: dev
+            SERVICE_NAME: mysql
+        volumes:
+            - school-admin-db-volume:/var/lib/mysql
+
+volumes:
+    school-admin-db-volume:
