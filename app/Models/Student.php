@@ -4,21 +4,26 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 
 class Student extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'first_name',
+        'last_name',
+        'date_of_birth',
+    ];
 
-    public function subjects(): BelongsToMany
+    public function parents(): HasManyThrough
     {
-        return $this->belongsToMany(Subject::class);
+        return $this->hasManyThrough(User::class, ParentStudent::class, 'student_id', 'id', 'id', 'parent_id');
     }
 
-    public function parents(): BelongsToMany
+    public function enrollments(): HasMany
     {
-        return $this->belongsToMany(Parent::class);
+        return $this->hasMany(Enrollment::class);
     }
 }

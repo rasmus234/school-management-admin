@@ -9,12 +9,12 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
-        Schema::create('levels', function (Blueprint $table) {
-            $table->id();
-            $table->integer('level');
-            $table->timestamps();
+        Schema::create('user_role', function (Blueprint $table) {
+            $table->foreignId('user_id')->constrained();
+            $table->foreignId('role_id')->constrained();
+            $table->primary(['user_id', 'role_id']);
         });
     }
 
@@ -23,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('levels');
+        Schema::dropIfExists('user_role');
     }
 };

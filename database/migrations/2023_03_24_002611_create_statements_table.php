@@ -9,11 +9,14 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
-        Schema::create('subjects', function (Blueprint $table) {
+        Schema::create('statements', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->foreignId('enrollment_id')->constrained();
+            $table->foreignId('teacher_id')->constrained('users');
+            $table->text('statement_text');
+            $table->timestamp('timestamp');
             $table->timestamps();
         });
     }
@@ -23,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('subjects');
+        Schema::dropIfExists('statements');
     }
 };
