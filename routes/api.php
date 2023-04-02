@@ -30,13 +30,12 @@ use App\Http\Controllers\Api\EnrollmentController;
 use App\Http\Controllers\Api\StatementController;
 use App\Http\Controllers\Api\CommentController;
 
-Route::apiResource("students", StudentController::class);
 
-//Route::middleware('api')->group(function () {
-//    Route::apiResource('users', UserController::class);
-//    Route::apiResource('students', StudentController::class);
+Route::middleware('api')->group(function () {
+    Route::apiResource('users', UserController::class);
+    Route::apiResource('students', StudentController::class);
 //    Route::apiResource('classes', ClassController::class);
 //    Route::apiResource('enrollments', EnrollmentController::class);
 //    Route::apiResource('statements', StatementController::class);
 //    Route::apiResource('comments', CommentController::class);
-//});
+});

@@ -13,7 +13,6 @@ class Statement extends Model
         'enrollment_id',
         'teacher_id',
         'statement_text',
-        'timestamp',
     ];
 
     public function enrollment(): \Illuminate\Database\Eloquent\Relations\BelongsTo

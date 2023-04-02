@@ -16,7 +16,6 @@ return new class extends Migration
             $table->foreignId('statement_id')->constrained();
             $table->foreignId('parent_id')->constrained('users');
             $table->text('comment_text');
-            $table->timestamp('timestamp');
             $table->timestamps();
         });
     }

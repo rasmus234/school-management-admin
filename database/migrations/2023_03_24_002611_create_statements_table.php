@@ -16,7 +16,6 @@ return new class extends Migration
             $table->foreignId('enrollment_id')->constrained();
             $table->foreignId('teacher_id')->constrained('users');
             $table->text('statement_text');
-            $table->timestamp('timestamp');
             $table->timestamps();
         });
     }
